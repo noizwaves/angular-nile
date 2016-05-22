@@ -5,4 +5,4 @@ Angular2 e-commerce sample application
 - Install Node.js via your favourite package manager
 - `npm install -g angular-cli`
 - `npm install`
-- `ng serve`
+- `npm run start`
