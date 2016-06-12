@@ -1,2 +1,8 @@
 <h2>Products</h2>
-<p>A list of the available products will go here.</p>
+
+<div class="products">
+  <div class="product" *ngFor="let p of products">
+    <span class="product-name">{{ p.name }}</span>
+    <span class="product-price">${{ p.price | number:1.2 }}</span>
+  </div>
+</div>

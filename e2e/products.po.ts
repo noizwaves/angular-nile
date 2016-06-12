@@ -6,4 +6,8 @@ export class ProductsPage {
   getHeadingText() {
     return element(by.css('nile-app h2')).getText();
   }
+
+  getProductsSize() {
+    return element.all(by.css('.product')).count();
+  }
 }
