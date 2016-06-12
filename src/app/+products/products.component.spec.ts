@@ -1,13 +1,19 @@
+import {provide} from '@angular/core';
 import {beforeEach, beforeEachProviders, describe, expect, it, inject} from '@angular/core/testing';
 import {ComponentFixture, TestComponentBuilder} from '@angular/compiler/testing';
 import {ProductsComponent} from './products.component';
-import {ProductService} from './services/product.service';
+import {ProductService} from './services/index';
 
 describe('Component: Products', () => {
   let builder:TestComponentBuilder;
+  let productService:ProductService;
+
+  beforeEach(() => {
+    productService = new ProductService();
+  });
 
   beforeEachProviders(() => [
-    ProductService,
+    provide(ProductService, {useValue: productService}),
     ProductsComponent,
   ]);
 
@@ -20,8 +26,8 @@ describe('Component: Products', () => {
   }));
 
   it('should create the component', inject([], () => {
-    return builder.createAsync(ProductsComponent)
-      .then((f:ComponentFixture<any>) => {
+    return builder
+      .createAsync(ProductsComponent).then((f:ComponentFixture<ProductsComponent>) => {
         f.detectChanges();
 
         expect(f.componentInstance).toBeTruthy();
